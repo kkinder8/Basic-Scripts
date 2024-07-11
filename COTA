@@ -1,0 +1,8 @@
+"Used for syncing group membership from one user to another"
+Get-ADUser -Identity <UserID> -Properties memberof | Select-Object -ExpandProperty memberof | Add-ADGroupMember -Members <New UserID>
+
+"Used for providing specific outlook calendar access"
+1. Install-Module exchangeonlinemanagement
+2. Import-Module Exchangeonlinemanagement
+3. Connect-ExchangeOnline -UserPrincipalName 'enter email here'
+4. Add-MailboxFolderPermission -Identity email@email.com:\calendar -User email@email.com -AccessRights Editor
